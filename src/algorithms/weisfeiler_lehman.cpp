@@ -2,13 +2,14 @@
 #include <set>
 #include <sstream>
 #include <iostream>
+#include <cmath>>
 
 std::unordered_map<int, std::string> WLAlgorithm::computeLabels(const Graph& g) {
     std::unordered_map<int, std::string> labels;
     for (int i = 0; i < g.getNumVertices(); i++) {
         labels[i] = "0"; // Initialize with a generic label 
     }
-    int iterationlimit = log(g.getNumVertices()); // this might need to be changed
+    int iterationlimit = std::log(g.getNumVertices()); // this might need to be changed
     std::cout << "Max no of iteration : " <<iterationlimit <<std::endl;
     for (int iteration = 0; iteration < iterationlimit; iteration++) { 
         std::unordered_map<int, std::string> newLabels;
