@@ -6,6 +6,7 @@
 #include <fstream>
 #include <sstream>
 #include <unordered_map>
+#include <string>
 
 class Graph {
 private:
@@ -21,6 +22,8 @@ public:
 
     int getNumVertices() const { return numVertices; }
     const std::vector<std::vector<int>>& getAdjacencyList() const { return adjacencyList; }
+    void generateRandomGraph(int edges);
+    Graph generateIsomorphicGraph() const;
 };
 
 #endif

@@ -5,7 +5,7 @@ int main() {
     /*Graph g1, g2;
     g1.loadFromFile("graph1.txt");
     g2.loadFromFile("graph2.txt");*/
-    Graph g1(4);
+    /*Graph g1(4);
     g1.addEdge(0, 1);
     g1.addEdge(1, 2);
     g1.addEdge(2, 3);
@@ -29,6 +29,33 @@ int main() {
     } else {
         std::cout << "Graphs are NOT isomorphic!\n";
     }
+    */
+
+    int numVertices, numEdges;
+    std::cout << "Enter the number of vertices: ";
+    std::cin >> numVertices;
+    std::cout << "Enter the number of edges: ";
+    std::cin >> numEdges;
+
+    Graph originalGraph(numVertices);
+    originalGraph.generateRandomGraph(numEdges);
+    
+    std::cout << "\nGenerated Graph:\n";
+    originalGraph.printGraph();
+
+    Graph isomorphicGraph = originalGraph.generateIsomorphicGraph();
+    
+    std::cout << "\nGenerated Isomorphic Graph:\n";
+    isomorphicGraph.printGraph();
+
+    std::vector<std::unique_ptr<GraphIsomorphismAlgorithm>> algorithms = AlgorithmFactory::createAllAlgorithms();
+
+    for (auto& algo : algorithms) {
+        std::cout << "Running: " << typeid(*algo).name() << "\n";
+        bool result = algo->areIsomorphic(originalGraph, isomorphicGraph);
+        std::cout << "Result: " << (result ? "Isomorphic" : "Not Isomorphic") << "\n\n";
+    }
+
 
     return 0;
 }

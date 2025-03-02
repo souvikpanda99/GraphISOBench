@@ -19,6 +19,8 @@ public:
                 return std::make_unique<WLAlgorithm>();
             case NAUTY_TRACES:
                 return std::make_unique<NautyTracesAlgorithm>();
+            case ALL_ALGORITHMS:
+                throw std::invalid_argument("Use createAllAlgorithms() to run all algorithms.");
             default:
                 throw std::invalid_argument("Invalid algorithm type");
         }
