@@ -4,6 +4,7 @@ project(GraphISOBench)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_BUILD_TYPE Debug)  # Ensures debug info is included
 
 # Add source files
 add_executable(GraphISOBench
